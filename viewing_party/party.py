@@ -93,16 +93,12 @@ def get_unique_watched(user_data):
 
 def get_friends_unique_watched(user_data):
 
-    # 1. Initialize Variables
     friends_movies = user_data['friends']
     movies = []
 
-    # 2. Add all movies friends have watched to movies
     for movie_list in friends_movies:
 
         movies += movie_list['watched']
-
-    # 3. Iterate through movies and remove movies user has watched
 
     unique_movies = []
 

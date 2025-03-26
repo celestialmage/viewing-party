@@ -94,11 +94,7 @@ def get_unique_watched(user_data):
 def get_friends_unique_watched(user_data):
 
     friends_movies = user_data['friends']
-    movies = []
-
-    for movie_list in friends_movies:
-
-        movies += movie_list['watched']
+    movies = compile_friends_movies(user_data)
 
     unique_movies = []
 
@@ -143,11 +139,7 @@ def get_new_rec_by_genre(user_data):
 
 def get_rec_from_favorites(user_data):
     user_favorites = user_data['favorites']
-    friends_movies = []
-
-    for movie_list in user_data['friends']:
-
-        friends_movies += movie_list['watched']
+    friends_movies = compile_friends_movies(user_data)
 
     rec_movies = []
 
@@ -156,3 +148,17 @@ def get_rec_from_favorites(user_data):
             rec_movies.append(movie)
 
     return rec_movies
+
+# -----------------------------------------
+# --------- HELPER FUNCTION ---------------
+# -----------------------------------------
+
+def compile_friends_movies(user_data):
+
+    friends_movies = []
+
+    for movie_list in user_data['friends']:
+
+        friends_movies += movie_list['watched']
+
+    return friends_movies
